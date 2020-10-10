@@ -1,11 +1,11 @@
 --- microtonal quantizer example
 -- andrew allred 2020.10.08
--- in1: clock
--- in2: voltage to quantize
--- out1: in2 quantized to scale1 on clock pulses
--- out2: in2 quantized to scale2 on clock pulses
--- out3: in2 quantized to scale3 continuously
--- out4: trigger pulses when out3 changes
+-- in1: voltage to quantize
+-- in2: sets notes per octave from 7 to 57
+-- out1: in1 quantized in real time
+-- out2: in1 quantized and updated every 64 steps
+-- out3: in1 quantized and updated every 256 steps
+-- out4: tbd!
 
 function quantize(volts,notesPerOctave) 
     volts = math.abs(volts)
