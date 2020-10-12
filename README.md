@@ -13,9 +13,9 @@
 - [seqswitch.lua](seqswitch.lua): route an input to 1 of 4 outputs with optional 'hold'
 - [shiftregister.lua](shiftregister.lua): output the last 4 captured voltages & play just friends
 - quantizers
-  - [quantizer.lua](quantizer.lua): a continuous and clocked quantizer demo
-  - [microtonal-quantizer.lua](microtonal-quantizer.lua): a continuous microtonal quantizer
-  - [microtonal-quantizer-polyphonc.lua](quantizer.lua): a continuous and polyphonic microtonal quantizer
+  - [12tet-quantizer.lua](quantizers/12tet-quantizer.lua): a continuous and clocked 12tet quantizer demo
+  - [microtonal-quantizer.lua](quantizers/microtonal-quantizer.lua): a continuous microtonal quantizer
+  - [microtonal-quantizer-polyphonic.lua](quantizers/microtonal-quantizer-polyphonic.lua): a continuous and polyphonic microtonal quantizer
 
 learn how to upload scripts to crow using [***stage one*** of the crow scripting tutorial](https://monome.org/docs/crow/scripting)
 
