@@ -8,11 +8,14 @@
 - [euclidean.lua](euclidean.lua): a euclidean rhythm generator
 - [gingerbread.lua](gingerbread.lua): clocked chaos generators
 - [lorenz.lua](lorenz.lua): lorenz attractor chaotic lfos
-- [quantizer.lua](quantizer.lua): a continuous and clocked quantizer demo
 - [samplehold-basic](samplehold-basic.lua): sample and hold basics for scripting tutorial
 - [samplehold.lua](samplehold.lua): sample and hold with quantization & randomness
 - [seqswitch.lua](seqswitch.lua): route an input to 1 of 4 outputs with optional 'hold'
 - [shiftregister.lua](shiftregister.lua): output the last 4 captured voltages & play just friends
+- quantizers
+  - [quantizer.lua](quantizer.lua): a continuous and clocked quantizer demo
+  - [microtonal-quantizer.lua](microtonal-quantizer.lua): a continuous microtonal quantizer
+  - [microtonal-quantizer-polyphonc.lua](quantizer.lua): a continuous and polyphonic microtonal quantizer
 
 learn how to upload scripts to crow using [***stage one*** of the crow scripting tutorial](https://monome.org/docs/crow/scripting)
 
