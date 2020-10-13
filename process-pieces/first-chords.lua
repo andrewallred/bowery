@@ -50,10 +50,19 @@ function play(out,ix)
   step[ix+2] = (step[ix+2] % length[ix+2]) + 1
 
   if count % 64 == 0 then
-    count = 0   
+    --count = 0   
     output[4]()  
   end
+  if count % 512 == 0 then
+    --count = 0   
+    output[2].volts = 3
+  end
+  if count % 1024 == 0 then
+    count = 0   
+    output[2].volts = .0
+  end
   count = (count + 1)
+  print(count)
 end
 
 input[1].change = function(s)
