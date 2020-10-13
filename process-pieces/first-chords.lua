@@ -29,26 +29,22 @@ function play(out,ix)
     abs = math.abs(input[2].volts)/5
     note = n1 + abs*(n2-n1)
     note = math.floor(note * (abs*3 + 0.1))
-    s = 0
     if out == 1 then 
-        local tscale = (math.floor(input[2].volts + 4.96) % #scale) + 1;
-        print('lead')
-        print(tscale)
-        s = scale[tscale]
+        --local tscale = (math.floor(input[2].volts + 4.96) % #scale) + 1;
+        --print('lead')
+        --print(tscale)
+        --s = scale[tscale]
+        s = scale[input[2].volts > -0.04 and 1 or 2]
         nn = s[ note%(#s) + 1 ]
-        print(nn)    
         oct = math.floor(note/12)
         output[out].volts = nn/12 + oct
     end
     if out == 3 then
         local tchord = (math.floor(input[2].volts + 4.96) % #basschord) + 1;
-        print('bass')
-        print(tchord)    
         s = basschord[tchord]
         nn = s[ note%(#s) + 1 ]
-        print(nn)    
         output[out].volts = nn/12
-    end
+    end    
     
   end
   step[ix] = (step[ix] % length[ix]) + 1
