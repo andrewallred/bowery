@@ -12,6 +12,9 @@
 - [samplehold.lua](samplehold.lua): sample and hold with quantization & randomness
 - [seqswitch.lua](seqswitch.lua): route an input to 1 of 4 outputs with optional 'hold'
 - [shiftregister.lua](shiftregister.lua): output the last 4 captured voltages & play just friends
+- process pieces
+  - [first.lua](process-pieces/first.lua): the default crow script
+  - [first-chords.lua](process-pieces/first-chords.lua): slightly tweak crow first script setting output 3 to be in chord mode, output 4 is a clock divider, and output 2 outputs alternating control voltages
 - quantizers
   - [12tet-quantizer.lua](quantizers/12tet-quantizer.lua): a continuous and clocked 12tet quantizer demo
   - [microtonal-quantizer.lua](quantizers/microtonal-quantizer.lua): a continuous microtonal quantizer
