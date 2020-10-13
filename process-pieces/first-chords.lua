@@ -6,7 +6,7 @@ rhythm = {}
 notes  = {}
 step   = {}
 bits   = {}
-basschord  = { {0, 2, 4}, {0, 2, 7}, {0, 4, 9} }
+chord  = { {0, 2, 4}, {0, 2, 7}, {0, 4, 9} }
 scale  = { {0,2,4,7,9}, {0,2,4,5,7,9,11} }
 decay  = 0.4
 attack = 0.04
@@ -40,8 +40,7 @@ function play(out,ix)
         output[out].volts = nn/12 + oct
     end
     if out == 3 then
-        local tchord = (math.floor(input[2].volts + 4.96) % #basschord) + 1;
-        s = basschord[tchord]
+        s = chord[(math.floor(input[2].volts + 4.96) % #chord) + 1]
         nn = s[ note%(#s) + 1 ]
         output[out].volts = nn/12
     end    
