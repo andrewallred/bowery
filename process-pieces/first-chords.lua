@@ -10,6 +10,7 @@ basschord  = { {0, 2, 4}, {0, 2, 7}, {0, 4, 9} }
 scale  = { {0,2,4,7,9}, {0,2,4,5,7,9,11} }
 decay  = 0.4
 attack = 0.04
+count = 0
 
 function set_d(t) decay = (t-1)/8 + 0.05 end
 function set_a(t) attack = (t-1)/64 + 0.003 end
@@ -19,7 +20,7 @@ function play(out,ix)
   if rhythm[ix][ step[ix] ] & 8 == 8 then
     if ix == 1 then set_d(t[ix]) else set_a(t[ix]) end
     t[ix] = 0
-    output[out+1]()
+    --output[out+1]()
   end
   -- set note
   if rhythm[ix+2][ step[ix+2] ] & 8 == 8 then
@@ -52,6 +53,12 @@ function play(out,ix)
   end
   step[ix] = (step[ix] % length[ix]) + 1
   step[ix+2] = (step[ix+2] % length[ix+2]) + 1
+
+  if count % 64 == 0 then
+    count = 0   
+    output[4]()  
+  end
+  count = (count + 1)
 end
 
 input[1].change = function(s)
