@@ -31,6 +31,7 @@ function play(out,ix)
     nn = s[ note%(#s) + 1 ]
     oct = math.floor(note/12)
     output[out].volts = nn/12 + oct
+    print(note)
   end
   step[ix] = (step[ix] % length[ix]) + 1
   step[ix+2] = (step[ix+2] % length[ix+2]) + 1
@@ -76,9 +77,13 @@ function init()
   for i=1,4 do
     notes[i] = {0}
     for n=1,31 do
-      notes[i][n+1] = notes[i][n] + (lcg() % 7) -3
+      local t = lcg() % 7      
+      notes[i][n+1] = notes[i][n] + t - 3
     end
   end
+
+  print(#notes[1])
+  print(#step)
 
   -- out params
   output[1].slew   = 0

@@ -11,6 +11,8 @@ scale  = { {0,2,4,7,9}, {0,2,4,5,7,9,11} }
 decay  = 0.4
 attack = 0.04
 count = 0
+l1 = 0
+l2 = 0
 
 function set_d(t) decay = (t-1)/8 + 0.05 end
 function set_a(t) attack = (t-1)/64 + 0.003 end
@@ -38,12 +40,19 @@ function play(out,ix)
         nn = s[ note%(#s) + 1 ]
         oct = math.floor(note/12)
         output[out].volts = nn/12 + oct
+        l1 = nn
     end
     if out == 3 then
         s = chord[(math.floor(input[2].volts + 4.96) % #chord) + 1]
         nn = s[ note%(#s) + 1 ]
         output[out].volts = nn/12
+        l2 = nn
     end    
+    if l1 == l2 then 
+      print('match')
+      print(l1)
+      output[2].volts = l1/12
+    end
     
   end
   step[ix] = (step[ix] % length[ix]) + 1
@@ -62,7 +71,7 @@ function play(out,ix)
     output[2].volts = .0
   end
   count = (count + 1)
-  print(count)
+  -- print(count)
 end
 
 input[1].change = function(s)
