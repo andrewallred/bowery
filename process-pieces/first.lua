@@ -24,21 +24,28 @@ function play(out,ix)
   if rhythm[ix+2][ step[ix+2] ] & 8 == 8 then
     n1 = notes[ix][ step[ix+2] ]
     n2 = notes[ix][ step[ix] ]
-    abs = math.abs(input[2].volts)/5
+    -- abs = math.abs(input[2].volts > .25 and input[2].volts or 5)/5
+    abs = math.abs(5)/5
     note = n1 + abs*(n2-n1)
     note = math.floor(note * (abs*3 + 0.1))
-    s = scale[input[2].volts > -0.04 and 1 or 2]
+    -- s = scale[input[2].volts > -0.5 and 1 or 2]
+    s = scale[1]
     nn = s[ note%(#s) + 1 ]
     oct = math.floor(note/12)
     output[out].volts = nn/12 + oct
-    print(note)
+    print(nn/12 + oct)
   end
   step[ix] = (step[ix] % length[ix]) + 1
   step[ix+2] = (step[ix+2] % length[ix+2]) + 1
 end
 
 input[1].change = function(s)
+  print("input 1")
   play(1,1)
+end
+
+input[2].change = function(s)
+  print("input 2")
   play(3,2)
 end
 
@@ -77,13 +84,9 @@ function init()
   for i=1,4 do
     notes[i] = {0}
     for n=1,31 do
-      local t = lcg() % 7      
-      notes[i][n+1] = notes[i][n] + t - 3
+      notes[i][n+1] = notes[i][n] + (lcg() % 7) -3
     end
   end
-
-  print(#notes[1])
-  print(#step)
 
   -- out params
   output[1].slew   = 0
@@ -95,6 +98,9 @@ function init()
 
   -- start sequence!
   input[1]{ mode = 'change', direction = 'rising' }
+  input[2]{ mode = 'change', direction = 'rising' }
   dec = metro.init{ event = env, time = 0.1 }
   dec:start()
 end
+
+init()
